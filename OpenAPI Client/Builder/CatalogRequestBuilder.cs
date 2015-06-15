@@ -42,7 +42,7 @@ namespace Bol.OpenAPI.Util
             }
             if (searchResultsRequest.Offers != null)
             {
-                queryParams.Add("offer", FormatterUtils.FormatOffer(searchResultsRequest.Offers));
+                queryParams.Add("offers", FormatterUtils.FormatOffer(searchResultsRequest.Offers));
             }
             if (searchResultsRequest.Sort != null)
             {
@@ -94,7 +94,7 @@ namespace Bol.OpenAPI.Util
             }
             if (listResultsRequest.Offers != null)
             {
-                queryParams.Add("offer", FormatterUtils.FormatOffer(listResultsRequest.Offers));
+                queryParams.Add("offers", FormatterUtils.FormatOffer(listResultsRequest.Offers));
             }
             if (listResultsRequest.Sort != null)
             {
@@ -129,7 +129,7 @@ namespace Bol.OpenAPI.Util
             }
             if (productsRequest.Offers != null)
             {
-                queryParams.Add("offer", FormatterUtils.FormatOffer(productsRequest.Offers));
+                queryParams.Add("offers", FormatterUtils.FormatOffer(productsRequest.Offers));
             }
 
             string queryString = HttpUtils.ToQueryString(queryParams);
@@ -206,7 +206,7 @@ namespace Bol.OpenAPI.Util
 
             if (productOffersRequest.Offers != null)
             {
-                queryParams.Add("offer", FormatterUtils.FormatOffer(productOffersRequest.Offers));
+                queryParams.Add("offers", FormatterUtils.FormatOffer(productOffersRequest.Offers));
             }            
 
             string queryString = HttpUtils.ToQueryString(queryParams);
