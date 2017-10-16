@@ -15,7 +15,7 @@ namespace OpenAPI_Client_Unit_Tests
             Assert.IsNotNull(session.SessionId);
 
             Basket basket = client.GetBasket(session.SessionId);
-            Assert.IsTrue(basket.BasketItems.Count == 0);
+            Assert.AreEqual(0, basket.BasketItems.Count);
         }
 
         [TestMethod]
@@ -25,12 +25,12 @@ namespace OpenAPI_Client_Unit_Tests
             Assert.IsNotNull(session.SessionId);
 
             Basket basket = client.GetBasket(session.SessionId);
-            Assert.IsTrue(basket.BasketItems.Count == 0);
+            Assert.AreEqual(0, basket.BasketItems.Count);
 
             client.AddItemToBasket(session.SessionId, "1004004012288125", 1, "192.168.0.1");
 
             basket = client.GetBasket(session.SessionId);
-            Assert.IsTrue(basket.BasketItems.Count == 1);
+            Assert.AreEqual(1, basket.BasketItems.Count);
         }
 
         [TestMethod]
@@ -40,19 +40,19 @@ namespace OpenAPI_Client_Unit_Tests
             Assert.IsNotNull(session.SessionId);
 
             Basket basket = client.GetBasket(session.SessionId);
-            Assert.IsTrue(basket.BasketItems.Count == 0);
+            Assert.AreEqual(0, basket.BasketItems.Count);
 
             client.AddItemToBasket(session.SessionId, "1004004012288125", 1, "192.168.0.1");
 
             basket = client.GetBasket(session.SessionId);
-            Assert.IsTrue(basket.BasketItems.Count == 1);
-            Assert.IsTrue(basket.BasketItems[0].Quantity == 1);
+            Assert.AreEqual(1, basket.BasketItems.Count);
+            Assert.AreEqual(1, basket.BasketItems[0].Quantity);
 
             client.ChangeItemQuantityInBasket(session.SessionId, basket.BasketItems[0].Id, 2);
 
             basket = client.GetBasket(session.SessionId);
-            Assert.IsTrue(basket.BasketItems.Count == 1);
-            Assert.IsTrue(basket.BasketItems[0].Quantity == 2);
+            Assert.AreEqual(1, basket.BasketItems.Count);
+            Assert.AreEqual(2, basket.BasketItems[0].Quantity);
         }
 
         [TestMethod]
@@ -62,17 +62,17 @@ namespace OpenAPI_Client_Unit_Tests
             Assert.IsNotNull(session.SessionId);
 
             Basket basket = client.GetBasket(session.SessionId);
-            Assert.IsTrue(basket.BasketItems.Count == 0);
+            Assert.AreEqual(0, basket.BasketItems.Count);
 
             client.AddItemToBasket(session.SessionId, "1004004012288125", 1, "192.168.0.1");
 
             basket = client.GetBasket(session.SessionId);
-            Assert.IsTrue(basket.BasketItems.Count == 1);
+            Assert.AreEqual(1, basket.BasketItems.Count);
 
             client.RemoveItemFromBasket(session.SessionId, basket.BasketItems[0].Id);
 
             basket = client.GetBasket(session.SessionId);
-            Assert.IsTrue(basket.BasketItems.Count == 0);
+            Assert.AreEqual(0, basket.BasketItems.Count);
         }
     }
 }
