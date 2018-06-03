@@ -532,6 +532,11 @@ public partial class AttributeGroup
             this.attributesField = value;
         }
     }
+
+    public override string ToString()
+    {
+        return $"[Title:{Title}]";
+    }
 }
 
 public partial class Entry
@@ -577,6 +582,11 @@ public partial class Entry
         {
             this.valueField = value;
         }
+    }
+
+    public override string ToString()
+    {
+        return $"[Key:{Key}, Label:{Label}, Value:{Value}]";
     }
 }
 
