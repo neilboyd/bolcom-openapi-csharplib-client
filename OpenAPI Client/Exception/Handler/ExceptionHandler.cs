@@ -9,13 +9,23 @@ namespace Bol.OpenAPI.Exception.Handler
     {
         public static BasicApiException HandleBasicApiException(HttpWebResponse response)
         {
-            using (Stream stream = response.GetResponseStream())
+            string status = response.StatusCode.ToString();
+            string message = response.StatusDescription;
+            try
             {
-                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-                string responseString = reader.ReadToEnd();
-                Error error = JsonConvert.DeserializeObject<Error>(responseString);
-                return new BasicApiException(response.StatusCode, error.Code, error.Message);
-            }            
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    message = reader.ReadToEnd();
+                    Error error = JsonConvert.DeserializeObject<Error>(message);
+                    status = error.Code;
+                    message = error.Message;
+                }
+            }
+            catch
+            {
+            }
+            return new BasicApiException(response.StatusCode, status, message);
         }
     }
 }
