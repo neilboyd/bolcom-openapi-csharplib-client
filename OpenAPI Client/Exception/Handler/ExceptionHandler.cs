@@ -14,8 +14,8 @@ namespace Bol.OpenAPI.Exception.Handler
             try
             {
                 using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
                 {
+                    StreamReader reader = new StreamReader(stream, Encoding.UTF8);
                     message = reader.ReadToEnd();
                     Error error = JsonConvert.DeserializeObject<Error>(message);
                     status = error.Code;
