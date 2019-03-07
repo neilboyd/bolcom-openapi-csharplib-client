@@ -172,7 +172,10 @@ namespace Bol.OpenAPI.Client
             HttpWebResponse response = null;
             try
             {
-                request.Proxy = proxy;
+                if (proxy != null)
+                {
+                    request.Proxy = proxy;
+                }
                 request.UserAgent = "bol.com API/4.0, 51c#_,,^..^,,_";
                 request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
