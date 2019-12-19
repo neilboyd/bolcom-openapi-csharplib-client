@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\OpenAPI Client\Exception\BasicApiException.cs" Link="Exception\BasicApiException.cs" />
     <Compile Include="..\OpenAPI Client\Generated\openapi-4.0.0.cs" Link="Generated\openapi-4.0.0.cs" />
     <Compile Include="..\OpenAPI Client\Request\Catalog\ListResultsRequest.cs" Link="Request\Catalog\ListResultsRequest.cs" />
     <Compile Include="..\OpenAPI Client\Request\Catalog\ProductOffersRequest.cs" Link="Request\Catalog\ProductOffersRequest.cs" />
@@ -19,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Generated\" />
+    <Folder Include="Exception\" />
     <Folder Include="Request\Catalog\" />
     <Folder Include="Request\Common\" />
   </ItemGroup>
