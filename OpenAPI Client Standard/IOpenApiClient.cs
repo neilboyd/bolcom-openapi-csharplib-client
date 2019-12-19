@@ -1,4 +1,5 @@
 ﻿using Bol.OpenAPI.Request.Catalog;
+using Bol.OpenAPI.Request.Common;
 using Refit;
 using System.Threading.Tasks;
 
@@ -21,8 +22,8 @@ namespace Bol.OpenAPI.Client
 
         ProductRecommendations GetProductRecommendations(ProductRecommendationsRequest productRecommendationsRequest);
 
-        [Get("/catalog/v4/products/{request.Ids}/?apikey={apikey}")]
-        Task<ProductList> GetProducts(ProductsRequest request, string apikey);
+        [Get("/catalog/v4/products/{productIds}/?apikey={apikey}")]
+        Task<ProductList> GetProducts(ProductsRequest request, string productIds, string apikey);
 
         RelatedProducts GetRelatedProducts(RelatedProductsRequest relatedProductsRequest);
         RequestAuthToken GetRequestAuthToken(string successUrl, string errorUrl);
@@ -39,6 +40,18 @@ namespace Bol.OpenAPI.Client
         void RemoveItemFromWishList(string sessionId, string wishListItemId);
 
         [Get("/catalog/v4/search/?apikey={apikey}")]
-        Task<SearchResults> Search(SearchResultsRequest searchResultsRequest, string apikey);
+        Task<SearchResults> Search(string apikey,
+            [AliasAs("q")] string query = null,
+            [AliasAs("pids")] string[] productIds = null,
+            [AliasAs("ids")] string[] refinementIds = null, // categoryId and refinementIds
+            string listId = null,
+            [AliasAs("searchfield")] string searchField = null,
+            bool? includeAttributes = null,
+            string[] dataOutput = null,
+            string[] offers = null,
+            string sort = null,
+            long? offset = null,
+            int? limit = null
+            );
     }
 }

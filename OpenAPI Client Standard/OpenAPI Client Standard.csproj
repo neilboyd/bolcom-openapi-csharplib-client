@@ -16,11 +16,13 @@
     <Compile Include="..\OpenAPI Client\Request\Catalog\SearchResultsRequest.cs" Link="Request\Catalog\SearchResultsRequest.cs" />
     <Compile Include="..\OpenAPI Client\Request\Catalog\SellerListRequest.cs" Link="Request\Catalog\SellerListRequest.cs" />
     <Compile Include="..\OpenAPI Client\Request\Common\EnumTypes.cs" Link="Request\Common\EnumTypes.cs" />
+    <Compile Include="..\OpenAPI Client\Util\EnumUtils.cs" Link="Util\EnumUtils.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Generated\" />
     <Folder Include="Exception\" />
+    <Folder Include="Util\" />
     <Folder Include="Request\Catalog\" />
     <Folder Include="Request\Common\" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using Bol.OpenAPI.Client;
 using Bol.OpenAPI.Request.Catalog;
 using Bol.OpenAPI.Request.Common;
+using OpenAPI_Client_Standard.Extensions;
 using NUnit.Framework;
 using Refit;
 using System.Threading.Tasks;
@@ -33,7 +34,8 @@ namespace OpenAPI_Client_Standard_Unit_Tests.Catalog
         {
             var request = new ProductOffersRequest
             {
-                Id = "1004004012288125"
+                Id = "1004004012288125",
+                Offers = new[] { EnumTypes.OfferType.ALL }
             };
             var results = await _client.GetProductOffers(request, Constants.API_KEY);
 
@@ -57,18 +59,20 @@ namespace OpenAPI_Client_Standard_Unit_Tests.Catalog
         [Test]
         public async Task TestSearch()
         {
-            SearchResultsRequest request = new SearchResultsRequest();
-            request.Query = "halo";
-            request.IncludeAttributes = true;
-            request.Offset = 10;
-            request.Limit = 10;
-            request.DataOutputs = new EnumTypes.DataOutputType[] {
-                EnumTypes.DataOutputType.PRODUCTS,
-                EnumTypes.DataOutputType.CATEGORIES,
-                EnumTypes.DataOutputType.REFINEMENTS
-            };
-            request.Offers = new EnumTypes.OfferType[] {
-                EnumTypes.OfferType.ALL
+            var request = new SearchResultsRequest
+            {
+                Query = "halo",
+                IncludeAttributes = true,
+                Offset = 10,
+                Limit = 10,
+                DataOutputs = new EnumTypes.DataOutputType[] {
+                    EnumTypes.DataOutputType.PRODUCTS,
+                    EnumTypes.DataOutputType.CATEGORIES,
+                    EnumTypes.DataOutputType.REFINEMENTS
+                },
+                Offers = new EnumTypes.OfferType[] {
+                    EnumTypes.OfferType.ALL
+                }
             };
 
             var results = await _client.Search(request, Constants.API_KEY);
