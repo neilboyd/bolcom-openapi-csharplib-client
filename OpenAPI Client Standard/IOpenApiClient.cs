@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace Bol.OpenAPI.Client
 {
+    [Headers("User-Agent: bol.com API/4.0, refit#_,,^..^,,_")]
     public interface IOpenApiClient
     {
         void AddItemToBasket(string sessionId, string offerId, int quantity, string ipAddress);
