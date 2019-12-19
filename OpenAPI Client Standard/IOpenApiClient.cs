@@ -15,9 +15,15 @@ namespace Bol.OpenAPI.Client
 
         void ChangeItemQuantityInBasket(string sessionId, string basketItemId, int quantity);
         Basket GetBasket(string sessionId);
-        ProductOffers GetProductOffers(ProductOffersRequest productOffersRequest);
+
+        [Get("/catalog/v4/offers/{request.Id}/?apikey={apikey}")]
+        Task<ProductOffers> GetProductOffers(ProductOffersRequest request, string apikey);
+
         ProductRecommendations GetProductRecommendations(ProductRecommendationsRequest productRecommendationsRequest);
-        ProductList GetProducts(ProductsRequest productsRequest);
+
+        [Get("/catalog/v4/products/{request.Ids}/?apikey={apikey}")]
+        Task<ProductList> GetProducts(ProductsRequest request, string apikey);
+
         RelatedProducts GetRelatedProducts(RelatedProductsRequest relatedProductsRequest);
         RequestAuthToken GetRequestAuthToken(string successUrl, string errorUrl);
         SellerList GetSellerList(SellerListRequest sellerListRequest);
@@ -31,6 +37,8 @@ namespace Bol.OpenAPI.Client
 
         void RemoveItemFromBasket(string sessionId, string basketItemId);
         void RemoveItemFromWishList(string sessionId, string wishListItemId);
-        SearchResults Search(SearchResultsRequest searchResultsRequest);
+
+        [Get("/catalog/v4/search/?apikey={apikey}")]
+        Task<SearchResults> Search(SearchResultsRequest searchResultsRequest, string apikey);
     }
 }
